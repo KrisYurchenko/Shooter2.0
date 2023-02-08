@@ -14,6 +14,7 @@ public class Test : MonoBehaviour
 
 
 
+    // вызывается только на первом кадре
     void Start()
     {
         // print(number);
