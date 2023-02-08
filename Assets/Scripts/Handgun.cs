@@ -18,14 +18,18 @@ namespace DefaultNamespace
                     print(hit.transform.gameObject.name);
 
                     Instantiate(impactPrefab, hit.point, Quaternion.LookRotation(hit.normal, Vector3.up));
+
+                    var destructible = hit.transform.GetComponent<DestructibleObject>();
+                    if (destructible != null)
+                    {
+                        destructible.ReceiveDamage();
+                    }
                     
                     var rigidbody = hit.transform.GetComponent<Rigidbody>();
-                    if (rigidbody == null)
+                    if (rigidbody != null)
                     {
-                        // hit.transform.gameObject.SetActive(false);
-                        return;
+                        rigidbody.AddForce(shootPoint.forward * force, ForceMode.Impulse);
                     }
-                    rigidbody.AddForce(shootPoint.forward * force, ForceMode.Impulse);
                 }
             }
         }
