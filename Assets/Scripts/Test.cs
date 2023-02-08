@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,7 +11,9 @@ public class Test : MonoBehaviour
     private string stroka = "Hello";
     private bool flag = true;
     private bool flag2 = false;
-    
+
+
+
     void Start()
     {
         // print(number);
@@ -47,5 +50,16 @@ public class Test : MonoBehaviour
         gameObject.name = "NewName";
         
         print(this.gameObject.name);
+
+        var result = CalculateSum(out var result2);
+        Debug.Log(result);
+
+        var t = GetComponent<Rigidbody>();
+    }
+
+    private int CalculateSum(out int varible2)
+    {
+        varible2 = 124124;
+        return 5 + 5;
     }
 }
